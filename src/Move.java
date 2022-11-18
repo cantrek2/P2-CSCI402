@@ -8,14 +8,16 @@ public class Move {
         this.moveTo = to;
     }
 
+    // add getters and setters for operatorName?
+
     public boolean checkPreconditions(WorldState worldState) {
         if(!worldState.isMonkeyAt(moveFrom)){
             return false;
         }
 
-        //if(!worldState.isMonkeyHeight(WorldState.HEIGHT_LOW)){
-        //    return false;
-        //}
+        if(!worldState.isMonkeyHeightAt(WorldState.HEIGHT_LOW)){
+           return false;
+        }
 
         return true;
     }
@@ -23,6 +25,8 @@ public class Move {
     public WorldState applyPostconditions(WorldState worldState) {
         //create and return a new WorldState
         //with the monkey’s updated location
-        return null;
+        WorldState newState = new WorldState(moveTo, worldState.getRoomBoxIn(), worldState.getRoomBananasIn(), worldState.getMonkeyHeight(), worldState.getMonkeyHasBananas());
+
+        return newState;
     }
 }
