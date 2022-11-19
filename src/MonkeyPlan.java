@@ -67,6 +67,17 @@ public class MonkeyPlan {
         WorldState worldState = new WorldState(monkeyRoomStart, boxRoomStart, bananasRoomStart, monkeyHeightStart, monkeyHasBananasStart);
 
         worldState.printWorldState();
-        
+        String curMove = "";
+        while(!worldState.isMonkeyAt(worldState.getRoomBoxIn())) {
+            curMove = worldState.findRoomPath(worldState.getRoomMonkeyIn(), worldState.getRoomBoxIn());
+            Move(worldState.getRoomMonkeyIn(), curMove);
+        }
+
+        while(!worldState.isMonkeyAt(worldState.getRoomBananasIn())) {
+            curMove = worldState.findRoomPath(worldState.getRoomBoxIn(), worldState.getRoomBananasIn());
+            Push(worldState.getRoomBoxIn(), curMove);
+        }
+        ClimbUp();
+        Grab();
     }
 }

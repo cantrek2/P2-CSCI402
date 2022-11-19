@@ -79,7 +79,38 @@ public class WorldState {
     public void setMonkeyHasBananas(boolean hasBananas){
         this.monkeyHasBananas = hasBananas;
     }
+    public String findRoomPath(String Start, String End) {
+        int startInt = 0;
+        int endInt = 0;
+        if(Start.equals("A")) {
+            startInt = 1;
+        } else if(Start.equals("B")) {
+            startInt = 2;
+        } else {
+            startInt = 3;
+        }
 
+        if(End.equals("A")) {
+            endInt = 1;
+        } else if(End.equals("B")) {
+            endInt = 2;
+        } else {
+            endInt = 3;
+        }
+        if(startInt < endInt) {
+            startInt++;
+        } else if(startInt > endInt) {
+            startInt--;
+        }
+
+        if(startInt == 1) {
+            return "A";
+        } else if(startInt == 2) {
+            return "B"; 
+        } else {
+            return "C";
+        }
+    }
     // print world state
     public void printWorldState(){
         System.out.println("Monkey is in Room: " + roomMonkeyIn);
